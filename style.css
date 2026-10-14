@@ -449,4 +449,131 @@ footer small {
     transition-duration: 0.01ms !important;
   }
 }
+/* ========================================
+   RSVP - CONFIRMACIÓN DE ASISTENCIA
+   ======================================== */
 
+.rsvp {
+  position: relative;
+  overflow: hidden;
+  padding: 85px 24px;
+  text-align: center;
+  background:
+    radial-gradient(
+      ellipse at top left,
+      rgba(102, 112, 75, 0.10),
+      transparent 45%
+    ),
+    var(--white);
+}
+
+.rsvp::before,
+.rsvp::after {
+  content: "❧";
+  position: absolute;
+  color: var(--olive);
+  opacity: 0.20;
+  font-family: Georgia, serif;
+  font-size: 90px;
+  pointer-events: none;
+}
+
+.rsvp::before {
+  top: 12px;
+  left: 12px;
+  transform: rotate(-35deg);
+}
+
+.rsvp::after {
+  right: 12px;
+  bottom: 12px;
+  transform: rotate(145deg);
+}
+
+.rsvp h2 {
+  margin: 12px auto 20px;
+  color: var(--burgundy);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.rsvp-intro {
+  max-width: 540px;
+  margin: 0 auto 25px;
+}
+
+.rsvp-date {
+  max-width: 520px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  border-top: 1px solid var(--beige-dark);
+  border-bottom: 1px solid var(--beige-dark);
+}
+
+.rsvp-date span {
+  color: var(--burgundy);
+  font-size: 1.7rem;
+}
+
+.rsvp-date p:first-of-type {
+  color: var(--burgundy);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.rsvp-date p:last-of-type {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.rsvp-form {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 8px;
+  overflow: hidden;
+  border: 1px solid var(--beige-dark);
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(80, 24, 41, 0.06);
+}
+
+.rsvp-form iframe {
+  display: block;
+  width: 100%;
+  min-height: 900px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--white);
+}
+
+.rsvp-note {
+  margin: 28px auto 0;
+  color: var(--burgundy);
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .rsvp {
+    padding: 60px 16px;
+  }
+
+  .rsvp::before,
+  .rsvp::after {
+    font-size: 55px;
+  }
+
+  .rsvp-date {
+    padding: 16px 8px;
+  }
+
+  .rsvp-form {
+    padding: 3px;
+  }
+
+  .rsvp-form iframe {
+    min-height: 1050px;
+  }
+}
