@@ -1,12 +1,11 @@
-
 /* ========================================
    BODA DE ANA Y JOSHUE
-   Cuenta atrás hasta el 10/04/2027
-   Hora prevista: 17:00, Madrid
+   10 de abril de 2027, a las 17:00
+   Hora de Madrid
    ======================================== */
 
-// Fecha y hora de la boda en la zona horaria de Madrid.
-// En abril, Madrid utiliza UTC+02:00.
+// Fecha de la boda.
+// El 10 de abril de 2027, Madrid estará en UTC+02:00.
 const weddingDate = new Date(
   "2027-04-10T17:00:00+02:00"
 ).getTime();
@@ -17,27 +16,32 @@ const hoursElement = document.getElementById("hours");
 const minutesElement = document.getElementById("minutes");
 const secondsElement = document.getElementById("seconds");
 
-const headingElement = document.getElementById("countdown-heading");
-const loveNoteElement = document.getElementById("love-note");
+const headingElement =
+  document.getElementById("countdown-heading");
 
-let countdownInterval;
+const loveNoteElement =
+  document.getElementById("love-note");
+
+let countdownInterval = null;
 
 function updateCountdown() {
-  const now = Date.now();
-  const difference = weddingDate - now;
-
-  // Comprobar que existen los elementos necesarios
+  // Si faltan elementos, no iniciar el contador.
   if (
     !daysElement ||
     !hoursElement ||
     !minutesElement ||
     !secondsElement
   ) {
-    clearInterval(countdownInterval);
+    if (countdownInterval !== null) {
+      clearInterval(countdownInterval);
+    }
     return;
   }
 
-  // Cuando llegue el día de la boda
+  const now = Date.now();
+  const difference = weddingDate - now;
+
+  // La boda ya ha llegado.
   if (difference <= 0) {
     daysElement.textContent = "0";
     hoursElement.textContent = "00";
@@ -54,36 +58,33 @@ function updateCountdown() {
         "¡Hoy celebramos nuestro amor! ♡";
     }
 
-    clearInterval(countdownInterval);
+    if (countdownInterval !== null) {
+      clearInterval(countdownInterval);
+      countdownInterval = null;
+    }
+
     return;
   }
 
-  // Calcular el tiempo restante
-  const days = Math.floor(
-    difference / (1000 * 60 * 60 * 24)
-  );
+  // Calcular el tiempo restante.
+  const secondsTotal = Math.floor(difference / 1000);
 
-  const hours = Math.floor(
-    (difference / (1000 * 60 * 60)) % 24
-  );
+  const days = Math.floor(secondsTotal / 86400);
+  const hours = Math.floor((secondsTotal % 86400) / 3600);
+  const minutes = Math.floor((secondsTotal % 3600) / 60);
+  const seconds = secondsTotal % 60;
 
-  const minutes = Math.floor(
-    (difference / (1000 * 60)) % 60
-  );
-
-  const seconds = Math.floor(
-    (difference / 1000) % 60
-  );
-
-  // Mostrar los resultados
+  // Mostrar los resultados.
   daysElement.textContent = String(days);
   hoursElement.textContent = String(hours).padStart(2, "0");
   minutesElement.textContent = String(minutes).padStart(2, "0");
   secondsElement.textContent = String(seconds).padStart(2, "0");
 }
 
-// Actualizar el contador inmediatamente
+// Actualizar inmediatamente.
 updateCountdown();
 
-// Actualizarlo cada segundo
-countdownInterval = setInterval(updateCountdown, 1000);
+// Actualizar cada segundo, salvo que la boda ya haya llegado.
+if (Date.now() < weddingDate) {
+  countdownInterval = setInterval(updateCountdown, 1000);
+}
