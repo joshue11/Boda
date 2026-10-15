@@ -137,15 +137,15 @@ const bizumFeedback = document.getElementById("bizum-feedback");
 
 if (copyBizumButton && bizumNumberElement && bizumFeedback) {
   copyBizumButton.addEventListener("click", async () => {
-    // Leemos el número del atributo data-number,
-    // no el nombre que aparece en pantalla.
-    const phoneNumber = (
-      bizumNumberElement.dataset.number || ""
-    ).replace(/[^\d+]/g, "");
+    // Leer directamente el atributo data-number.
+    const rawNumber = bizumNumberElement.getAttribute("data-number");
+    const phoneNumber = (rawNumber || "").replace(/[^\d+]/g, "");
+
+    console.log("Número leído:", rawNumber);
 
     if (!phoneNumber) {
       bizumFeedback.textContent =
-        "No se ha encontrado el número de Bizum.";
+        "No se encuentra el número. Revisa el atributo data-number del HTML.";
       return;
     }
 
@@ -157,17 +157,16 @@ if (copyBizumButton && bizumNumberElement && bizumFeedback) {
 
       if (copied) {
         bizumFeedback.textContent =
-          "¡Número copiado! ♡ Ya puedes pegarlo en tu banco.";
+          "¡Número copiado correctamente! ♡";
 
         copyBizumButton.textContent = "¡Número copiado! ♡";
       } else {
         bizumFeedback.textContent =
-          "No se ha podido copiar automáticamente. " +
-          "Puedes copiar el número manualmente.";
+          "No se pudo copiar automáticamente. Número: " + phoneNumber;
       }
     } catch (error) {
       bizumFeedback.textContent =
-        "No se ha podido copiar el número. Inténtalo manualmente.";
+        "Error al copiar. Puedes copiar manualmente: " + phoneNumber;
     } finally {
       copyBizumButton.disabled = false;
 
