@@ -242,3 +242,99 @@ if (copyIbanButton && ibanElement && ibanFeedback) {
     }
   });
 }
+/* ========================================
+   HORARIO DE LA BODA
+   Fecha: 10 de abril de 2027
+   Zona horaria: Madrid
+   ======================================== */
+
+(function initWeddingSchedule() {
+  const schedule = document.getElementById("horario");
+  const status = document.getElementById("schedule-status");
+
+  if (!schedule || !status) return;
+
+  const items = Array.from(
+    schedule.querySelectorAll(".schedule-item")
+  );
+
+  const madridDateFormatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Madrid",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
+
+  const madridTimeFormatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Madrid",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23"
+  });
+
+  function updateSchedule() {
+    const now = new Date();
+
+    const dateParts = Object.fromEntries(
+      madridDateFormatter
+        .formatToParts(now)
+        .filter(part => part.type !== "literal")
+        .map(part => [part.type, part.value])
+    );
+
+    const isWeddingDay =
+      dateParts.year === "2027" &&
+      dateParts.month === "04" &&
+      dateParts.day === "10";
+
+    // Fuera del día de la boda, no hay actividades en curso.
+    items.forEach(item => item.classList.remove("is-current"));
+
+    if (!isWeddingDay) {
+      status.textContent =
+        "Nos hace mucha ilusión compartir este día con vosotros ♡";
+      return;
+    }
+
+    const timeParts = Object.fromEntries(
+      madridTimeFormatter
+        .formatToParts(now)
+        .filter(part => part.type !== "literal")
+        .map(part => [part.type, part.value])
+    );
+
+    const currentMinutes =
+      Number(timeParts.hour) * 60 +
+      Number(timeParts.minute);
+
+    const currentItem = items.find(item => {
+      const start = Number(item.dataset.start);
+      const end = Number(item.dataset.end);
+
+      return currentMinutes >= start && currentMinutes < end;
+    });
+
+    if (currentItem) {
+      currentItem.classList.add("is-current");
+
+      const title = currentItem.querySelector("h3");
+
+      status.textContent =
+        "♡ En este momento: " + title.textContent;
+    } else if (currentMinutes < 660) {
+      status.textContent =
+        "¡Hoy es el gran día! Nos vemos muy pronto ♡";
+    } else if (currentMinutes >= 1200) {
+      status.textContent =
+        "¡Gracias por compartir este día con nosotros! ♡";
+    } else {
+      status.textContent =
+        "Estamos entre actividades. ¡Seguimos disfrutando juntos! ♡";
+    }
+  }
+
+  updateSchedule();
+
+  // Actualiza el estado cada minuto.
+  window.setInterval(updateSchedule, 60 * 1000);
+})();
