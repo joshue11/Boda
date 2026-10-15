@@ -28,12 +28,9 @@
     <p class="subtitle">Un gran amor, una misma dirección</p>
     <div class="flourish" aria-hidden="true">— ♡ —</div>
 
-    <p class="countdown-heading" id="countdown-heading">
-      FALTAN
-    </p>
+    <p class="countdown-heading" id="countdown-heading">FALTAN</p>
 
-    <div class="countdown"
-         aria-label="Cuenta atrás para nuestra boda">
+    <div class="countdown" aria-label="Cuenta atrás para nuestra boda">
       <div class="time-box">
         <span id="days">---</span>
         <small>DÍAS</small>
@@ -57,9 +54,7 @@
       Nos vemos el 10 de abril ♡
     </p>
 
-    <a href="#detalles" class="button">
-      Descubrir nuestra boda
-    </a>
+    <a href="#detalles" class="button">Descubrir nuestra boda</a>
   </header>
 
   <main>
@@ -153,9 +148,7 @@
         </iframe>
       </div>
 
-      <p class="rsvp-fallback">
-        ¿No puedes ver el formulario?
-      </p>
+      <p class="rsvp-fallback">¿No puedes ver el formulario?</p>
 
       <a
         class="button"
@@ -180,54 +173,125 @@
         Vuestra presencia es nuestro mejor regalo.
         Si queréis ayudarnos a comenzar esta nueva etapa,
         podéis hacerlo de forma totalmente voluntaria.
+        Lo importante para nosotros es compartir este día con vosotros.
       </p>
 
+      <!-- BIZUM -->
       <article class="gift-card">
         <div class="gift-icon" aria-hidden="true">♡</div>
-        <h3>Enviar un Bizum</h3>
+        <h3>Un detalle por Bizum</h3>
 
         <p>
-          Puedes enviarnos tu aportación desde la aplicación
-          de tu banco utilizando nuestro número asociado a Bizum.
+          Si os apetece hacernos un regalo, podéis enviarnos
+          vuestra aportación a través de Bizum desde la
+          aplicación de vuestro banco.
+        </p>
+
+        <p class="gift-note">Nuestro número asociado a Bizum es:</p>
+
+        <div class="payment-number">
+          <span class="phone-icon" aria-hidden="true">♡</span>
+          <p class="gift-contact" id="bizum-number">+34 672 316 459</p>
+        </div>
+
+        <button
+          type="button"
+          class="gift-button"
+          id="copy-bizum">
+          Copiar número de Bizum
+        </button>
+
+        <p
+          class="copy-feedback"
+          id="bizum-feedback"
+          role="status"
+          aria-live="polite">
         </p>
 
         <p class="gift-note">
-          Teléfono asociado a Bizum:
+          Después, abre la aplicación de tu banco, entra en Bizum
+          y sigue los pasos para enviar el dinero. Comprueba
+          el destinatario antes de confirmar.
         </p>
 
-        <p class="gift-contact">+34 672316459 </p>
-
         <a
-          class="gift-button"
+          class="text-link"
           href="https://bizum.com/es/como-funciona/"
           target="_blank"
           rel="noopener noreferrer">
-          Cómo enviar un Bizum
+          Más información sobre Bizum
         </a>
       </article>
 
+      <!-- TRANSFERENCIA BANCARIA -->
       <article class="gift-card">
         <div class="gift-icon" aria-hidden="true">♡</div>
         <h3>Transferencia bancaria</h3>
 
         <p>
-          También podéis hacernos una transferencia bancaria.
-          Más adelante añadiremos los datos necesarios
-          para realizarla.
+          Si lo preferís, también podéis hacernos una transferencia
+          bancaria. Os dejamos un espacio preparado para añadir
+          nuestros datos cuando los tengamos.
         </p>
 
-        <div class="qr-pending">
-          <span aria-hidden="true">♡</span>
-          <p>
-            Nuestro código QR de transferencia
-            estará disponible aquí.
+        <!--
+          Cuando tengas el IBAN:
+          1. Sustituye el valor vacío de data-iban.
+          2. Añade el nombre de los titulares en el párrafo indicado.
+          3. El botón de copiar se habilitará automáticamente.
+        -->
+
+        <div class="bank-details">
+          <p class="gift-note">Titular de la cuenta</p>
+          <p class="bank-value" id="bank-holder">
+            Añadiremos aquí el nombre del titular
+          </p>
+
+          <p class="gift-note">IBAN</p>
+          <p
+            class="bank-value"
+            id="bank-iban"
+            data-iban="">
+            Próximamente
+          </p>
+
+          <button
+            type="button"
+            class="gift-button"
+            id="copy-iban"
+            disabled>
+            Copiar IBAN
+          </button>
+
+          <p
+            class="copy-feedback"
+            id="iban-feedback"
+            role="status"
+            aria-live="polite">
+            Los datos bancarios estarán disponibles próximamente.
           </p>
         </div>
 
         <p class="gift-note">
-          Antes de confirmar una transferencia, comprobad
-          siempre el nombre del beneficiario y los datos del pago.
+          Antes de confirmar el pago, comprobad que el nombre
+          del beneficiario y el IBAN sean correctos.
         </p>
+      </article>
+
+      <!-- QR OPCIONAL -->
+      <article class="gift-card">
+        <div class="gift-icon" aria-hidden="true">♡</div>
+        <h3>También por código QR</h3>
+
+        <p>
+          Más adelante podremos añadir aquí un código QR de pago,
+          si disponemos de uno compatible con el método elegido.
+        </p>
+
+        <div class="qr-pending">
+          <span aria-hidden="true">♡</span>
+          <p>El código QR estará disponible próximamente.</p>
+        </div>
       </article>
 
       <p class="gift-thanks">
