@@ -4,13 +4,14 @@
    Hora de Madrid
    ======================================== */
 
-// Fecha de la boda.
-// El 10 de abril de 2027, Madrid estará en UTC+02:00.
+// ========================================
+// CUENTA ATRÁS
+// ========================================
+
 const weddingDate = new Date(
   "2027-04-10T17:00:00+02:00"
 ).getTime();
 
-// Elementos del contador
 const daysElement = document.getElementById("days");
 const hoursElement = document.getElementById("hours");
 const minutesElement = document.getElementById("minutes");
@@ -25,7 +26,6 @@ const loveNoteElement =
 let countdownInterval = null;
 
 function updateCountdown() {
-  // Si faltan elementos, no iniciar el contador.
   if (
     !daysElement ||
     !hoursElement ||
@@ -34,14 +34,14 @@ function updateCountdown() {
   ) {
     if (countdownInterval !== null) {
       clearInterval(countdownInterval);
+      countdownInterval = null;
     }
+
     return;
   }
 
-  const now = Date.now();
-  const difference = weddingDate - now;
+  const difference = weddingDate - Date.now();
 
-  // La boda ya ha llegado.
   if (difference <= 0) {
     daysElement.textContent = "0";
     hoursElement.textContent = "00";
@@ -66,7 +66,6 @@ function updateCountdown() {
     return;
   }
 
-  // Calcular el tiempo restante.
   const secondsTotal = Math.floor(difference / 1000);
 
   const days = Math.floor(secondsTotal / 86400);
@@ -74,17 +73,172 @@ function updateCountdown() {
   const minutes = Math.floor((secondsTotal % 3600) / 60);
   const seconds = secondsTotal % 60;
 
-  // Mostrar los resultados.
   daysElement.textContent = String(days);
   hoursElement.textContent = String(hours).padStart(2, "0");
   minutesElement.textContent = String(minutes).padStart(2, "0");
   secondsElement.textContent = String(seconds).padStart(2, "0");
 }
 
-// Actualizar inmediatamente.
 updateCountdown();
 
-// Actualizar cada segundo, salvo que la boda ya haya llegado.
 if (Date.now() < weddingDate) {
   countdownInterval = setInterval(updateCountdown, 1000);
+}
+
+// ========================================
+// COPIAR TEXTO
+// ========================================
+
+async function copyText(text) {
+  // Método preferido: API del portapapeles.
+  // Normalmente requiere HTTPS o localhost.
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (error) {
+      // Si falla, intentamos el método alternativo.
+    }
+  }
+
+  // Alternativa para navegadores compatibles.
+  const temporaryInput = document.createElement("textarea");
+
+  temporaryInput.value = text;
+  temporaryInput.setAttribute("readonly", "");
+  temporaryInput.style.position = "fixed";
+  temporaryInput.style.left = "-9999px";
+  temporaryInput.style.top = "0";
+
+  document.body.appendChild(temporaryInput);
+  temporaryInput.select();
+  temporaryInput.setSelectionRange(0, text.length);
+
+  let copied = false;
+
+  try {
+    copied = document.execCommand("copy");
+  } catch (error) {
+    copied = false;
+  }
+
+  temporaryInput.remove();
+
+  return copied;
+}
+
+// ========================================
+// COPIAR NÚMERO DE BIZUM
+// ========================================
+
+const copyBizumButton = document.getElementById("copy-bizum");
+const bizumNumberElement = document.getElementById("bizum-number");
+const bizumFeedback = document.getElementById("bizum-feedback");
+
+if (copyBizumButton && bizumNumberElement && bizumFeedback) {
+  copyBizumButton.addEventListener("click", async () => {
+    // Quitamos espacios y otros caracteres de formato.
+    // Se conserva el prefijo internacional +34.
+    const phoneNumber = bizumNumberElement.textContent
+      .trim()
+      .replace(/[^\d+]/g, "");
+
+    if (!phoneNumber) {
+      bizumFeedback.textContent =
+        "No se ha encontrado el número de Bizum.";
+
+      return;
+    }
+
+    copyBizumButton.disabled = true;
+    bizumFeedback.textContent = "Copiando número…";
+
+    try {
+      const copied = await copyText(phoneNumber);
+
+      if (copied) {
+        bizumFeedback.textContent =
+          "¡Número copiado! ♡ Ya puedes pegarlo en tu banco.";
+
+        copyBizumButton.textContent = "¡Número copiado! ♡";
+      } else {
+        bizumFeedback.textContent =
+          "No se ha podido copiar automáticamente. " +
+          "Puedes seleccionar el número y copiarlo manualmente.";
+      }
+    } catch (error) {
+      bizumFeedback.textContent =
+        "No se ha podido copiar el número. Inténtalo manualmente.";
+    } finally {
+      copyBizumButton.disabled = false;
+
+      // Restauramos el texto del botón.
+      // El mensaje de confirmación permanece visible.
+      window.setTimeout(() => {
+        copyBizumButton.textContent = "Copiar número de Bizum";
+      }, 2500);
+    }
+  });
+}
+
+// ========================================
+// COPIAR IBAN
+// ========================================
+
+const copyIbanButton = document.getElementById("copy-iban");
+const ibanElement = document.getElementById("bank-iban");
+const ibanFeedback = document.getElementById("iban-feedback");
+
+if (copyIbanButton && ibanElement && ibanFeedback) {
+  // El botón solo se activa cuando se ha añadido un IBAN.
+  const iban = (ibanElement.dataset.iban || "")
+    .replace(/\s+/g, "")
+    .trim();
+
+  copyIbanButton.disabled = !iban;
+
+  if (iban) {
+    copyIbanButton.textContent = "Copiar IBAN";
+    ibanFeedback.textContent = "";
+  }
+
+  copyIbanButton.addEventListener("click", async () => {
+    const currentIban = (ibanElement.dataset.iban || "")
+      .replace(/\s+/g, "")
+      .trim();
+
+    if (!currentIban) {
+      ibanFeedback.textContent =
+        "Los datos bancarios estarán disponibles próximamente.";
+
+      return;
+    }
+
+    copyIbanButton.disabled = true;
+    ibanFeedback.textContent = "Copiando IBAN…";
+
+    try {
+      const copied = await copyText(currentIban);
+
+      if (copied) {
+        ibanFeedback.textContent =
+          "¡IBAN copiado! ♡ Ya puedes pegarlo en tu banco.";
+
+        copyIbanButton.textContent = "¡IBAN copiado! ♡";
+      } else {
+        ibanFeedback.textContent =
+          "No se ha podido copiar automáticamente. " +
+          "Puedes seleccionar el IBAN y copiarlo manualmente.";
+      }
+    } catch (error) {
+      ibanFeedback.textContent =
+        "No se ha podido copiar el IBAN. Inténtalo manualmente.";
+    } finally {
+      copyIbanButton.disabled = false;
+
+      window.setTimeout(() => {
+        copyIbanButton.textContent = "Copiar IBAN";
+      }, 2500);
+    }
+  });
 }
