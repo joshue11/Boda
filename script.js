@@ -137,16 +137,15 @@ const bizumFeedback = document.getElementById("bizum-feedback");
 
 if (copyBizumButton && bizumNumberElement && bizumFeedback) {
   copyBizumButton.addEventListener("click", async () => {
-    // Quitamos espacios y otros caracteres de formato.
-    // Se conserva el prefijo internacional +34.
-    const phoneNumber = bizumNumberElement.textContent
-      .trim()
-      .replace(/[^\d+]/g, "");
+    // Leemos el número del atributo data-number,
+    // no el nombre que aparece en pantalla.
+    const phoneNumber = (
+      bizumNumberElement.dataset.number || ""
+    ).replace(/[^\d+]/g, "");
 
     if (!phoneNumber) {
       bizumFeedback.textContent =
         "No se ha encontrado el número de Bizum.";
-
       return;
     }
 
@@ -164,7 +163,7 @@ if (copyBizumButton && bizumNumberElement && bizumFeedback) {
       } else {
         bizumFeedback.textContent =
           "No se ha podido copiar automáticamente. " +
-          "Puedes seleccionar el número y copiarlo manualmente.";
+          "Puedes copiar el número manualmente.";
       }
     } catch (error) {
       bizumFeedback.textContent =
@@ -172,15 +171,12 @@ if (copyBizumButton && bizumNumberElement && bizumFeedback) {
     } finally {
       copyBizumButton.disabled = false;
 
-      // Restauramos el texto del botón.
-      // El mensaje de confirmación permanece visible.
       window.setTimeout(() => {
         copyBizumButton.textContent = "Copiar número de Bizum";
       }, 2500);
     }
   });
 }
-
 // ========================================
 // COPIAR IBAN
 // ========================================
