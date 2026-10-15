@@ -45,8 +45,13 @@ p {
   overflow-wrap: break-word;
 }
 
-a {
+a,
+button {
   -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
 }
 
 /* PORTADA */
@@ -194,7 +199,7 @@ a {
   font-style: italic;
 }
 
-/* BOTONES */
+/* BOTONES GENERALES */
 
 .button,
 .gift-button {
@@ -207,6 +212,7 @@ a {
   color: var(--white);
   font-family: "DM Sans", sans-serif;
   font-size: 0.95rem;
+  line-height: 1.5;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -218,7 +224,7 @@ a {
 }
 
 .button:hover,
-.gift-button:hover {
+.gift-button:not(:disabled):hover {
   background: var(--burgundy-dark);
   transform: translateY(-2px);
 }
@@ -228,6 +234,11 @@ a {
 .text-link:focus-visible {
   outline: 3px solid var(--olive);
   outline-offset: 4px;
+}
+
+.gift-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* HISTORIA, DETALLES Y REGALOS */
@@ -355,12 +366,77 @@ a {
 .gift-contact {
   color: var(--burgundy);
   font-weight: 600;
+  font-size: clamp(1.25rem, 4vw, 1.6rem);
+  letter-spacing: 0.04em;
   overflow-wrap: anywhere;
 }
 
-.gift-button {
+/* NÚMERO DE BIZUM */
+
+.payment-number {
+  margin: 20px auto 10px;
+  padding: 18px 12px;
+  border: 1px solid var(--beige-dark);
+  border-radius: 8px;
+  background: var(--beige);
+}
+
+.phone-icon {
+  display: block;
+  color: var(--burgundy);
+  font-size: 1.5rem;
+}
+
+.payment-number .gift-contact {
+  margin: 4px 0;
+}
+
+.gift-card .gift-button {
+  width: 100%;
+  max-width: 320px;
+  min-height: 48px;
   margin-top: 12px;
 }
+
+/* MENSAJES DE COPIADO */
+
+.copy-feedback {
+  min-height: 1.7em;
+  margin: 8px 0;
+  color: var(--olive);
+  font-size: 0.9rem;
+}
+
+.copy-feedback:empty {
+  min-height: 0;
+  margin: 0;
+}
+
+/* DATOS BANCARIOS */
+
+.bank-details {
+  margin: 22px 0;
+  padding: 20px 14px;
+  border: 1px solid var(--beige-dark);
+  border-radius: 8px;
+  background: var(--beige);
+}
+
+.bank-value {
+  color: var(--burgundy);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.bank-details .gift-note {
+  margin-bottom: 0;
+}
+
+.bank-details .gift-button {
+  margin-top: 18px;
+}
+
+/* CÓDIGO QR */
 
 .qr-pending {
   max-width: 280px;
@@ -581,6 +657,14 @@ footer small {
 
   .rsvp-form iframe {
     height: 1200px;
+  }
+
+  .payment-number {
+    padding: 16px 8px;
+  }
+
+  .gift-card .gift-button {
+    width: 100%;
   }
 }
 
