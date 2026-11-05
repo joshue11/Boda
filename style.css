@@ -1,258 +1,94 @@
 
 /* =========================================
-   ANA & JOSHUE - WEB DE BODA
-   PALETA BEIGE / BURDEOS / VERDE OLIVA
+   ANA & JOSHUE — ESTILOS DE LA BODA
    ========================================= */
 
 :root {
-  --beige: #F3E9D9;
-  --beige-dark: #E6D6BF;
-  --burgundy: #70263B;
-  --burgundy-dark: #501829;
-  --olive: #66704B;
-  --olive-light: #DCE0CE;
-  --text: #494438;
-  --white: #FFFCF7;
+  --cream: #F3E9D9;
+  --cream-light: #FBF7F0;
+  --burgundy: #713D43;
+  --burgundy-dark: #512D32;
+  --olive: #737A55;
+  --olive-light: #E5E6D9;
+  --text: #51463F;
+  --white: #FFFFFF;
+  --line: #D8C9B8;
+  --shadow: 0 12px 35px rgba(75, 55, 45, 0.10);
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 20px;
+  scroll-padding-top: 25px;
 }
 
 body {
-  background: var(--beige);
+  margin: 0;
+  background: var(--cream-light);
   color: var(--text);
   font-family: "DM Sans", sans-serif;
   line-height: 1.7;
 }
 
-h1, h2, h3 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 400;
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--burgundy);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 12px 0 24px;
 }
 
 p {
-  overflow-wrap: break-word;
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* =========================================
-   PORTADA
+   ELEMENTOS GENERALES
    ========================================= */
-
-.hero {
-  min-height: 100vh;
-  min-height: 100svh;
-  padding: 75px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-
-  background:
-    radial-gradient(
-      ellipse at top left,
-      rgba(102, 112, 75, 0.16),
-      transparent 42%
-    ),
-    radial-gradient(
-      ellipse at bottom right,
-      rgba(112, 38, 59, 0.13),
-      transparent 45%
-    ),
-    var(--beige);
-}
-
-.hero::before,
-.hero::after {
-  content: "❧";
-  position: absolute;
-  z-index: -1;
-  font-family: Georgia, serif;
-  font-size: 110px;
-  color: var(--olive);
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-.hero::before {
-  top: 18px;
-  left: 15px;
-  transform: rotate(-35deg);
-}
-
-.hero::after {
-  bottom: 15px;
-  right: 15px;
-  transform: rotate(145deg);
-}
 
 .eyebrow {
   color: var(--olive);
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
+  font-size: 0.76rem;
   font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
-
-.ornament {
-  margin: 20px 0 10px;
-  color: var(--burgundy);
-  letter-spacing: 0.4em;
-}
-
-.hero h1 {
-  color: var(--burgundy);
-  font-size: clamp(3rem, 9vw, 6.5rem);
-  line-height: 1.15;
-}
-
-.hero h1 span {
-  font-size: 0.75em;
-  font-style: italic;
-}
-
-.subtitle {
-  margin-top: 18px;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(1rem, 3vw, 1.35rem);
-}
-
-.flourish {
-  margin: 30px 0;
-  color: var(--burgundy);
-  font-size: 1.5rem;
-}
-
-/* =========================================
-   FOTOGRAFÍAS
-   ========================================= */
-
-.photo-frame {
-  width: min(100%, 650px);
-  margin: 30px auto;
-  padding: 9px;
-  border: 1px solid var(--beige-dark);
-  background: var(--white);
-  box-shadow: 0 12px 35px rgba(80, 24, 41, 0.10);
-}
-
-.wedding-photo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Foto 1: portada */
-
-.hero-photo {
-  width: min(100%, 570px);
-  height: clamp(230px, 43vw, 390px);
-}
-
-/* Foto 2: invitación */
-
-.invitation-photo {
-  width: min(100%, 650px);
-  height: clamp(240px, 48vw, 420px);
-}
-
-/* Foto 3: antes de los regalos */
-
-.final-photo {
-  width: min(100%, 700px);
-  height: clamp(250px, 48vw, 430px);
-}
-
-/* =========================================
-   CONTADOR
-   ========================================= */
-
-.countdown-heading {
-  margin-bottom: 20px;
-  color: var(--olive);
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  font-weight: 600;
-}
-
-.countdown {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  width: min(100%, 650px);
-}
-
-.time-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 18px 5px;
-  border-right: 1px solid var(--beige-dark);
-}
-
-.time-box:last-child {
-  border-right: none;
-}
-
-.time-box span {
-  color: var(--burgundy);
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  line-height: 1.2;
-  font-variant-numeric: tabular-nums;
-}
-
-.time-box small {
-  margin-top: 10px;
-  color: var(--olive);
-  font-size: 0.65rem;
-  letter-spacing: 0.13em;
-}
-
-.wedding-date {
-  margin-top: 30px;
-  color: var(--burgundy);
-  font-size: 1.1rem;
-  letter-spacing: 0.18em;
-}
-
-.love-note {
-  margin-top: 8px;
-  font-family: "Playfair Display", Georgia, serif;
-  font-style: italic;
-}
-
-/* =========================================
-   BOTONES
-   ========================================= */
 
 .button,
 .gift-button {
   display: inline-block;
-  margin-top: 25px;
-  padding: 13px 24px;
   border: 1px solid var(--burgundy);
-  border-radius: 4px;
+  border-radius: 3px;
+  padding: 13px 25px;
   background: var(--burgundy);
   color: var(--white);
   font-family: "DM Sans", sans-serif;
-  font-size: 0.95rem;
-  text-align: center;
+  font-size: 0.9rem;
   text-decoration: none;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .button:hover,
@@ -261,45 +97,130 @@ p {
   transform: translateY(-2px);
 }
 
-.gift-button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  transform: none;
+.text-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--burgundy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+section {
+  width: 100%;
 }
 
 /* =========================================
-   HISTORIA
+   PORTADA
    ========================================= */
 
-.intro,
-.details,
-.invitation,
-.schedule-section,
-.final-photo-section,
-.gifts {
-  padding: 85px 24px;
+.hero {
+  min-height: 90vh;
+  padding: 55px 20px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  background: var(--cream);
 }
+
+.hero-photo {
+  width: min(100%, 680px);
+  margin: 0 auto 38px;
+}
+
+.hero-photo .wedding-photo {
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+}
+
+.hero h1 {
+  margin: 12px 0;
+  font-size: clamp(3rem, 9vw, 5.8rem);
+  letter-spacing: -0.04em;
+}
+
+.hero h1 span {
+  color: var(--olive);
+  font-style: italic;
+}
+
+.subtitle {
+  margin-bottom: 15px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-style: italic;
+}
+
+.ornament,
+.flourish {
+  color: var(--olive);
+  font-size: 1.5rem;
+  letter-spacing: 0.3em;
+}
+
+.countdown-heading {
+  margin: 25px 0 12px;
+  color: var(--olive);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+
+.countdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 8px 0 20px;
+}
+
+.time-box {
+  min-width: 82px;
+  padding: 12px 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.time-box span {
+  display: block;
+  color: var(--burgundy);
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+}
+
+.time-box small {
+  color: var(--olive);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.wedding-date {
+  margin: 8px 0;
+  color: var(--burgundy);
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+}
+
+.love-note {
+  margin: 0 0 25px;
+  font-style: italic;
+}
+
+/* =========================================
+   NUESTRA HISTORIA
+   ========================================= */
 
 .intro {
-  background: var(--white);
-}
-
-.intro h2,
-.details h2,
-.invitation h2,
-.schedule-section h2,
-.final-photo-section h2,
-.gifts h2 {
-  max-width: 700px;
-  margin: 12px auto 24px;
-  color: var(--burgundy);
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.25;
+  padding: 95px 22px;
+  text-align: center;
+  background: var(--cream-light);
 }
 
 .intro > p:not(.eyebrow) {
-  max-width: 550px;
+  max-width: 620px;
   margin: 12px auto;
 }
 
@@ -310,31 +231,145 @@ p {
 }
 
 /* =========================================
-   INVITACIÓN: ¿NOS ACOMPAÑAS?
+   HORARIO
    ========================================= */
 
-.invitation {
-  background: var(--beige);
+.schedule {
+  padding: 85px 22px;
+  text-align: center;
+  background: var(--olive-light);
 }
 
-.invitation-text {
-  max-width: 560px;
+.schedule-intro {
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+
+.schedule-date,
+.rsvp-date {
   margin: 25px auto;
+  color: var(--burgundy);
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
 }
 
-.invitation-date {
+.schedule-date span,
+.rsvp-date span {
+  color: var(--olive);
+  font-size: 1.5rem;
+}
+
+.schedule-status {
+  max-width: 650px;
+  margin: 20px auto 35px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.schedule-timeline {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.schedule-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 105px 35px 1fr;
+  gap: 15px;
+  align-items: start;
+  margin: 0 0 22px;
+}
+
+.schedule-time {
+  padding-top: 20px;
+  color: var(--burgundy);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.schedule-time span {
+  padding: 0 3px;
+  color: var(--olive);
+}
+
+.schedule-marker {
+  position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  color: var(--olive);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
+  height: 100%;
 }
 
-.invitation-date span {
+.schedule-marker::before {
+  position: absolute;
+  top: 0;
+  bottom: -25px;
+  width: 1px;
+  background: var(--line);
+  content: "";
+}
+
+.schedule-item:last-child .schedule-marker::before {
+  display: none;
+}
+
+.schedule-marker span {
+  z-index: 1;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid var(--olive);
+  border-radius: 50%;
+  background: var(--cream-light);
   color: var(--burgundy);
+}
+
+.schedule-card {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--cream-light);
+  box-shadow: 0 5px 15px rgba(75, 55, 45, 0.05);
+}
+
+.schedule-card h3 {
+  margin: 4px 0 8px;
+  font-size: 1.4rem;
+}
+
+.schedule-card p:last-child {
+  margin-bottom: 0;
+}
+
+.schedule-label {
+  margin: 0;
+  color: var(--olive);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.schedule-item.is-current .schedule-card {
+  border: 2px solid var(--burgundy);
+  box-shadow: var(--shadow);
+}
+
+.schedule-item.is-current .schedule-marker span {
+  background: var(--burgundy);
+  color: var(--white);
+}
+
+.schedule-footer {
+  margin-top: 35px;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
 }
 
 /* =========================================
@@ -342,202 +377,268 @@ p {
    ========================================= */
 
 .details {
-  background: var(--olive-light);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding: 85px 22px;
+  text-align: center;
+  background: var(--cream-light);
+}
+
+.details > .eyebrow,
+.details > h2 {
+  grid-column: 1 / -1;
 }
 
 .detail-card {
-  max-width: 480px;
-  margin: 18px auto;
-  padding: 25px;
-  border: 1px solid var(--beige-dark);
-  border-radius: 6px;
+  padding: 28px 18px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
   background: var(--white);
+  box-shadow: var(--shadow);
 }
 
 .detail-icon {
-  color: var(--burgundy);
-  font-size: 1.6rem;
+  color: var(--olive);
+  font-size: 2rem;
 }
 
 .detail-card h3 {
-  margin: 8px 0;
-  color: var(--burgundy);
+  margin: 12px 0;
   font-size: 1.5rem;
 }
 
-.small-note {
-  margin-top: 8px;
-  color: var(--olive);
-  font-size: 0.85rem;
+/* =========================================
+   FOTOGRAFÍAS 2 Y 3
+   ========================================= */
+
+/*
+  IMPORTANTE:
+  Estas secciones son independientes.
+  Las imágenes no deben ser fondos ni elementos absolutos.
+*/
+
+.invitation-photo,
+.final-photo-section {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 65px 22px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.invitation-photo {
+  background: var(--cream);
+}
+
+.final-photo-section {
+  background: var(--cream-light);
+}
+
+.photo-frame {
+  position: relative;
+  display: block;
+  width: min(100%, 850px);
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, 0.65);
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+}
+
+.photo-frame .wedding-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-photo.photo-frame {
+  width: min(100%, 680px);
+}
+
+.hero-photo .wedding-photo {
+  max-height: 470px;
+}
+
+.photo-caption {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--burgundy);
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.final-photo-section h2 {
+  margin: 8px 0 0;
+}
+
+.final-photo-section p {
+  margin: 0;
 }
 
 /* =========================================
-   HORARIO
+   CONFIRMACIÓN DE ASISTENCIA
    ========================================= */
 
-.schedule-section {
+.rsvp {
+  display: block;
+  width: 100%;
+  padding: 85px 22px;
+  background: var(--cream);
+  text-align: center;
+}
+
+.rsvp-intro {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.rsvp-date {
+  font-size: 1rem;
+}
+
+.rsvp-date p {
+  margin: 5px 0;
+}
+
+.rsvp-form {
+  width: min(100%, 760px);
+  margin: 30px auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.rsvp-form iframe {
+  display: block;
+  width: 100%;
+  min-height: 1100px;
+  border: 0;
   background: var(--white);
 }
 
-.schedule-intro {
-  max-width: 550px;
-  margin: 0 auto 20px;
+.rsvp-fallback {
+  margin-top: 25px;
 }
 
-.schedule-status {
-  max-width: 550px;
-  margin: 20px auto;
-  color: var(--burgundy);
-  font-family: "Playfair Display", Georgia, serif;
-  font-style: italic;
-}
-
-.schedule {
-  max-width: 650px;
-  margin: 35px auto;
-  text-align: left;
-}
-
-.schedule-item {
-  display: flex;
-  align-items: stretch;
-  gap: 22px;
-  padding: 22px 15px;
-  border-left: 2px solid var(--beige-dark);
-  transition: 0.25s ease;
-}
-
-.schedule-time {
-  min-width: 65px;
-  color: var(--burgundy);
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.3rem;
-}
-
-.schedule-content h3 {
-  color: var(--olive);
-  font-size: 1.3rem;
-}
-
-.schedule-content p {
-  font-size: 0.92rem;
-}
-
-.schedule-item.is-current {
-  border-left: 4px solid var(--burgundy);
-  background: var(--beige);
-  padding-left: 13px;
-}
-
-.schedule-item.is-current h3 {
-  color: var(--burgundy);
-}
-
-/* =========================================
-   TERCERA FOTOGRAFÍA
-   ========================================= */
-
-.final-photo-section {
-  background: var(--olive-light);
-}
-
-.final-photo-text {
-  max-width: 570px;
-  margin: 25px auto;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.15rem;
+.rsvp-note {
+  margin-top: 30px;
+  font-family: "Playfair Display", serif;
   font-style: italic;
 }
 
 /* =========================================
-   REGALOS Y BIZUM
+   REGALOS
    ========================================= */
 
 .gifts {
-  background: var(--beige);
-}
-
-.gifts h2 {
-  max-width: 650px;
+  padding: 85px 22px;
+  background: var(--olive-light);
+  text-align: center;
 }
 
 .gift-message {
-  max-width: 570px;
+  max-width: 700px;
   margin: 0 auto 35px;
 }
 
 .gift-card {
-  max-width: 480px;
+  width: min(100%, 620px);
   margin: 22px auto;
-  padding: 30px 24px;
-  border: 1px solid var(--beige-dark);
-  border-radius: 8px;
-  background: var(--white);
-  box-shadow: 0 5px 18px rgba(80, 24, 41, 0.04);
+  padding: 30px 25px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--cream-light);
+  box-shadow: var(--shadow);
 }
 
 .gift-icon {
-  color: var(--burgundy);
+  color: var(--olive);
   font-size: 2rem;
 }
 
 .gift-card h3 {
-  margin: 10px 0;
-  color: var(--burgundy);
+  margin: 10px 0 15px;
   font-size: 1.6rem;
 }
 
-.gift-card p {
-  margin: 12px 0;
+.gift-note {
+  margin: 15px 0 8px;
+  color: #776B61;
+  font-size: 0.88rem;
 }
 
-.gift-note {
+.payment-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.phone-icon {
   color: var(--olive);
-  font-size: 0.9rem;
 }
 
 .gift-contact,
-.bank-iban {
+.bank-value {
+  overflow-wrap: anywhere;
   color: var(--burgundy);
   font-weight: 600;
-  overflow-wrap: anywhere;
+  letter-spacing: 0.04em;
 }
 
 .gift-button {
-  margin-top: 12px;
+  margin: 8px 0;
 }
 
-.feedback {
+.gift-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.copy-feedback {
   min-height: 24px;
+  margin: 8px 0;
   color: var(--olive);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
 }
 
 .qr-pending {
-  max-width: 280px;
-  margin: 22px auto;
-  padding: 25px 15px;
+  margin-top: 20px;
+  padding: 25px;
   border: 1px dashed var(--olive);
-  border-radius: 8px;
-  background: var(--beige);
-  color: var(--olive);
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .qr-pending span {
-  display: block;
-  color: var(--burgundy);
+  color: var(--olive);
   font-size: 2rem;
 }
 
 .qr-pending p {
-  margin-top: 8px;
-  font-size: 0.9rem;
+  margin: 8px 0 0;
 }
 
 .gift-thanks {
   margin-top: 35px;
-  color: var(--burgundy);
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
   font-style: italic;
 }
 
@@ -546,117 +647,132 @@ p {
    ========================================= */
 
 footer {
-  padding: 40px 20px;
-  background: var(--burgundy);
-  color: var(--beige);
+  padding: 45px 20px;
+  background: var(--burgundy-dark);
+  color: var(--cream);
   text-align: center;
 }
 
 .footer-heart {
-  color: var(--beige);
   font-size: 2rem;
 }
 
 footer p {
-  font-family: "Playfair Display", Georgia, serif;
+  margin: 8px 0;
+  font-family: "Playfair Display", serif;
   font-size: 1.5rem;
 }
 
 footer small {
-  opacity: 0.85;
-}
-
-.back-to-top {
-  display: inline-block;
-  margin-top: 18px;
-  color: var(--beige);
-  font-size: 0.85rem;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  color: var(--cream);
+  opacity: 0.8;
 }
 
 /* =========================================
-   MÓVILES
+   MÓVILES Y TABLETS
    ========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
 
   .hero {
-    padding: 55px 14px;
-  }
-
-  .hero::before,
-  .hero::after {
-    font-size: 65px;
-  }
-
-  .countdown {
-    gap: 0;
-  }
-
-  .time-box {
-    padding: 14px 2px;
-  }
-
-  .time-box small {
-    font-size: 0.55rem;
-    letter-spacing: 0.04em;
-  }
-
-  .intro,
-  .details,
-  .invitation,
-  .schedule-section,
-  .final-photo-section,
-  .gifts {
-    padding: 60px 18px;
+    min-height: auto;
+    padding: 35px 16px 55px;
   }
 
   .hero-photo {
-    height: 250px;
+    margin-bottom: 28px;
   }
 
-  .invitation-photo {
-    height: 260px;
+  .countdown {
+    gap: 7px;
   }
 
-  .final-photo {
-    height: 270px;
+  .time-box {
+    min-width: 68px;
+    padding: 9px 6px;
+  }
+
+  .time-box span {
+    font-size: 1.6rem;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+    padding: 65px 18px;
+  }
+
+  .details > .eyebrow,
+  .details > h2 {
+    grid-column: auto;
+  }
+
+  .detail-card {
+    width: 100%;
+  }
+
+  .schedule-item {
+    grid-template-columns: 75px 25px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .schedule-time {
+    font-size: 0.72rem;
+  }
+
+  .schedule-card {
+    padding: 15px 13px;
+  }
+
+  .schedule-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .invitation-photo,
+  .final-photo-section {
+    padding: 42px 16px;
+  }
+
+  .photo-frame {
+    width: 100%;
+    border-width: 5px;
+  }
+
+  .photo-frame .wedding-photo {
+    aspect-ratio: 4 / 5;
+    max-height: 560px;
+  }
+
+  .hero-photo .wedding-photo {
+    aspect-ratio: 4 / 5;
+  }
+
+  .rsvp,
+  .gifts,
+  .schedule,
+  .intro {
+    padding: 65px 17px;
+  }
+
+  .rsvp-form iframe {
+    min-height: 1100px;
   }
 
   .gift-card {
     padding: 25px 18px;
   }
+}
+
+@media (max-width: 390px) {
+  .time-box {
+    min-width: 61px;
+  }
 
   .schedule-item {
-    gap: 12px;
-    padding: 18px 10px;
+    grid-template-columns: 65px 22px minmax(0, 1fr);
+    gap: 6px;
   }
 
   .schedule-time {
-    min-width: 55px;
-    font-size: 1.1rem;
-  }
-
-  .button,
-  .gift-button {
-    max-width: 100%;
+    font-size: 0.66rem;
   }
 }
-
-/* =========================================
-   ACCESIBILIDAD
-   ========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-  }
-}
-
