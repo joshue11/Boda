@@ -3,20 +3,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ana & Joshue | Nuestra boda</title>
+  <title>Ana & Joshue | Nuestra boda</title>
+  <meta name="description" content="Acompáñanos a celebrar nuestra boda el 10 de abril de 2027.">
 
-<meta name="description"
-      content="Nos casamos el 10 de abril de 2027. Acompáñanos a celebrar nuestra historia de amor.">
-
-<meta name="robots" content="noindex, nofollow">
-
-<meta name="theme-color" content="#F3E9D9">
+  <meta name="theme-color" content="#F3E9D9">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
@@ -24,50 +21,85 @@
 
 <body>
 
-  <!-- PORTADA -->
-  <header class="hero">
-    <p class="eyebrow">CON MUCHO AMOR, OS INVITAMOS A NUESTRA BODA</p>
-    <div class="ornament" aria-hidden="true">✦ ♡ ✦</div>
+  <!-- =================================
+       PORTADA Y PRIMERA FOTOGRAFÍA
+       ================================= -->
+
+  <header class="hero" id="inicio">
+
+    <p class="eyebrow">NUESTRA HISTORIA COMIENZA AQUÍ</p>
+
+    <div class="ornament">✦ ♡ ✦</div>
 
     <h1>Ana <span>&</span> Joshue</h1>
-    <p class="subtitle">Un gran amor, una misma dirección</p>
-    <div class="flourish" aria-hidden="true">— ♡ —</div>
 
-    <p class="countdown-heading" id="countdown-heading">FALTAN</p>
+    <p class="subtitle">
+      Un gran amor, una misma dirección
+    </p>
 
-    <div class="countdown" aria-label="Cuenta atrás para nuestra boda">
+    <figure class="photo-frame hero-photo">
+      <img
+        src="./images/boda-1.jpg"
+        alt="Ana y Joshue juntos"
+        class="wedding-photo"
+        fetchpriority="high"
+      >
+    </figure>
+
+    <div class="flourish">— ♡ —</div>
+
+    <p class="countdown-heading" id="countdown-heading">
+      FALTAN
+    </p>
+
+    <div class="countdown">
+
       <div class="time-box">
         <span id="days">---</span>
         <small>DÍAS</small>
       </div>
+
       <div class="time-box">
         <span id="hours">--</span>
         <small>HORAS</small>
       </div>
+
       <div class="time-box">
         <span id="minutes">--</span>
         <small>MINUTOS</small>
       </div>
+
       <div class="time-box">
         <span id="seconds">--</span>
         <small>SEGUNDOS</small>
       </div>
+
     </div>
 
     <p class="wedding-date">10 · 04 · 2027</p>
+
     <p class="love-note" id="love-note">
       Nos vemos el 10 de abril ♡
     </p>
 
-    <a href="#detalles" class="button">Descubrir nuestra boda</a>
+    <a href="#historia" class="button">
+      Descubrir nuestra historia
+    </a>
+
   </header>
+
 
   <main>
 
-    <!-- NUESTRA HISTORIA -->
+    <!-- =================================
+         NUESTRA HISTORIA
+         ================================= -->
+
     <section class="intro" id="historia">
-      <p class="eyebrow">-----------</p>
-      <h2>Un día para recordar</h2>
+
+      <p class="eyebrow">NUESTRA HISTORIA</p>
+
+      <h2>Dos corazones, un mismo camino</h2>
 
       <p>
         Hay momentos que merecen celebrarse rodeados
@@ -75,396 +107,359 @@
       </p>
 
       <p>
-        Nos hace mucha ilusión compartir este día
-        tan especial con vosotros.
+        Después de tantos recuerdos, aventuras y sueños,
+        queremos comenzar una nueva etapa juntos.
       </p>
 
-      <div class="heart" aria-hidden="true">♡</div>
+      <div class="heart">♡</div>
+
     </section>
 
-    <!-- HORARIO DEL DÍA DE LA BODA -->
-    <section class="schedule" id="horario">
-      <p class="eyebrow">UN DÍA MUY ESPECIAL ♡</p>
 
-      <h2>Así será nuestro gran día</h2>
+    <!-- =================================
+         SEGUNDA FOTOGRAFÍA
+         ¿NOS ACOMPAÑAS?
+         ================================= -->
 
-      <p class="schedule-intro">
-        Hemos preparado cada momento con mucho cariño.
-        Aquí podéis consultar el horario para disfrutar
-        con nosotros de este día tan especial.
+    <section class="invitation" id="invitacion">
+
+      <p class="eyebrow">UN DÍA MUY ESPECIAL</p>
+
+      <h2>¿Nos acompañas?</h2>
+
+      <figure class="photo-frame invitation-photo">
+        <img
+          src="./images/boda-2.jpg"
+          alt="Una fotografía especial de Ana y Joshue"
+          class="wedding-photo"
+          loading="lazy"
+        >
+      </figure>
+
+      <p class="invitation-text">
+        Nos encantaría que formaras parte de este día.
+        Tu compañía hará que sea todavía más inolvidable.
       </p>
 
-      <div class="schedule-date">
-        <span aria-hidden="true">♡</span>
-        <p>Sábado, 10 de abril de 2027</p>
+      <div class="invitation-date">
+        <span>♡</span>
+        SÁBADO, 10 DE ABRIL DE 2027
+        <span>♡</span>
       </div>
 
-      <p
-        class="schedule-status"
-        id="schedule-status"
-        role="status"
-        aria-live="polite">
-        Nos hace mucha ilusión compartir este día con vosotros ♡
-      </p>
+      <a href="#detalles" class="button">
+        Ver los detalles
+      </a>
 
-      <ol class="schedule-timeline">
-
-        <li class="schedule-item" data-start="660" data-end="720">
-          <div class="schedule-time">
-            <time datetime="11:00">11:00</time>
-            <span>a</span>
-            <time datetime="12:00">12:00</time>
-          </div>
-          <div class="schedule-marker" aria-hidden="true">
-            <span>♡</span>
-          </div>
-          <article class="schedule-card">
-            <p class="schedule-label">PRIMER MOMENTO</p>
-            <h3>Sellamiento</h3>
-            <p>
-              Comenzamos nuestro día con un momento
-              muy especial.
-            </p>
-          </article>
-        </li>
-
-        <li class="schedule-item" data-start="720" data-end="750">
-          <div class="schedule-time">
-            <time datetime="12:00">12:00</time>
-            <span>a</span>
-            <time datetime="12:30">12:30</time>
-          </div>
-          <div class="schedule-marker" aria-hidden="true">
-            <span>♡</span>
-          </div>
-          <article class="schedule-card">
-            <p class="schedule-label">RECUERDOS</p>
-            <h3>Fotos</h3>
-            <p>
-              Inmortalizaremos juntos algunos de los
-              momentos más bonitos del día.
-            </p>
-          </article>
-        </li>
-
-        <li class="schedule-item" data-start="810" data-end="840">
-          <div class="schedule-time">
-            <time datetime="13:30">13:30</time>
-            <span>a</span>
-            <time datetime="14:00">14:00</time>
-          </div>
-          <div class="schedule-marker" aria-hidden="true">
-            <span>♡</span>
-          </div>
-          <article class="schedule-card">
-            <p class="schedule-label">UN BOCADO</p>
-            <h3>Picoteo</h3>
-            <p>
-              Un ratito para compartir algo rico
-              y disfrutar de la compañía.
-            </p>
-          </article>
-        </li>
-
-        <li class="schedule-item" data-start="840" data-end="900">
-          <div class="schedule-time">
-            <time datetime="14:00">14:00</time>
-            <span>a</span>
-            <time datetime="15:00">15:00</time>
-          </div>
-          <div class="schedule-marker" aria-hidden="true">
-            <span>♡</span>
-          </div>
-          <article class="schedule-card">
-            <p class="schedule-label">NUESTRO MOMENTO</p>
-            <h3>Ceremonia</h3>
-            <p>
-              El momento de celebrar nuestro amor
-              y compartirlo con las personas que queremos.
-            </p>
-          </article>
-        </li>
-
-        <li class="schedule-item" data-start="900" data-end="1020">
-          <div class="schedule-time">
-            <time datetime="15:00">15:00</time>
-            <span>a</span>
-            <time datetime="17:00">17:00</time>
-          </div>
-          <div class="schedule-marker" aria-hidden="true">
-            <span>♡</span>
-          </div>
-          <article class="schedule-card">
-            <p class="schedule-label">A CELEBRAR</p>
-            <h3>Cóctel y comida</h3>
-            <p>
-              Brindaremos, disfrutaremos de la comida
-              y compartiremos buenos momentos.
-            </p>
-          </article>
-        </li>
-
-        <li class="schedule-item" data-start="1020" data-end="1200">
-          <div class="schedule-time">
-            <time datetime="17:00">17:00</time>
-            <span>a</span>
-            <time datetime="∞">∞</time>
-          </div>
-          <div class="schedule-marker" aria-hidden="true">
-            <span>♡</span>
-          </div>
-          <article class="schedule-card">
-            <p class="schedule-label">EL GRAN FINAL</p>
-            <h3>Fotos y fiesta</h3>
-            <p>
-              Seguiremos creando recuerdos, bailando
-              y disfrutando juntos de nuestra celebración.
-            </p>
-          </article>
-        </li>
-
-      </ol>
-
-      <p class="schedule-footer">
-        Gracias por acompañarnos en esta historia de amor ♡
-      </p>
     </section>
 
-    <!-- DETALLES DE LA BODA -->
+
+    <!-- =================================
+         DETALLES DE LA BODA
+         ================================= -->
+
     <section class="details" id="detalles">
+
       <p class="eyebrow">RESERVA LA FECHA</p>
+
       <h2>¡Nos casamos!</h2>
 
       <article class="detail-card">
-        <span class="detail-icon" aria-hidden="true">♡</span>
+
+        <span class="detail-icon">♡</span>
+
         <h3>La fecha</h3>
+
         <p>Sábado, 10 de abril de 2027</p>
+
       </article>
 
+
       <article class="detail-card">
-        <span class="detail-icon" aria-hidden="true">⌖</span>
+
+        <span class="detail-icon">⌖</span>
+
         <h3>El lugar</h3>
+
         <p>
-          Calle del Maestro 23,<br>
-          28914 Leganés, Madrid
+          Próximamente compartiremos la dirección
+          y todos los detalles de la celebración.
         </p>
 
-        <a
-          class="button"
-          href="https://www.google.com/maps/search/?api=1&query=Calle+del+Maestro+23%2C+28914+Legan%C3%A9s%2C+Madrid"
-          target="_blank"
-          rel="noopener noreferrer">
-          Cómo llegar
-        </a>
       </article>
 
+
       <article class="detail-card">
-        <span class="detail-icon" aria-hidden="true">✉</span>
+
+        <span class="detail-icon">✉</span>
+
         <h3>Confirmación de asistencia</h3>
+
         <p>
           ¡Nos encantará contar contigo!
-          Confírmanos si podrás acompañarnos.
         </p>
-        <a href="#confirmacion" class="text-link">
-          Confirmar asistencia ♡
-        </a>
+
+        <p class="small-note">
+          Próximamente publicaremos cómo confirmar
+          vuestra asistencia.
+        </p>
+
       </article>
+
     </section>
 
-    <!-- CONFIRMACIÓN DE ASISTENCIA -->
-    <section class="rsvp" id="confirmacion">
-      <p class="eyebrow">UN DÍA PARA COMPARTIR ♡</p>
-      <h2>¿Nos acompañas?</h2>
 
-      <p class="rsvp-intro">
-        Estamos deseando celebrar este día con vosotros.
-        Por favor, confirmad vuestra asistencia mediante
-        el siguiente formulario.
+    <!-- =================================
+         HORARIO DE LA BODA
+         ================================= -->
+
+    <section class="schedule-section">
+
+      <p class="eyebrow">UN DÍA PARA DISFRUTAR</p>
+
+      <h2>Así será nuestro día</h2>
+
+      <p class="schedule-intro">
+        Estos son algunos de los momentos que
+        queremos compartir con vosotros.
       </p>
 
-      <div class="rsvp-date">
-        <span aria-hidden="true">♡</span>
-        <p>Sábado, 10 de abril de 2027</p>
-        <p>Calle del Maestro 23, 28914 Leganés, Madrid</p>
-      </div>
-
-      <div class="rsvp-form">
-        <iframe
-          id="google-form"
-          src="https://docs.google.com/forms/d/e/1FAIpQLScst4YKV1viSMYjRbahPr_OBr9WCj6CGTpQJHUROFOXgdag6w/viewform?embedded=true"
-          title="Formulario de confirmación de asistencia a la boda de Ana y Joshue"
-          width="100%"
-          height="1100"
-          loading="lazy">
-          Tu navegador no puede mostrar el formulario.
-          Utiliza el enlace que aparece debajo.
-        </iframe>
-      </div>
-
-      <p class="rsvp-fallback">¿No puedes ver el formulario?</p>
-
-      <a
-        class="button"
-        href="https://docs.google.com/forms/d/e/1FAIpQLScst4YKV1viSMYjRbahPr_OBr9WCj6CGTpQJHUROFOXgdag6w/viewform"
-        target="_blank"
-        rel="noopener noreferrer">
-        Abrir formulario de asistencia
-      </a>
-
-      <p class="rsvp-note">
-        Gracias por ayudarnos a preparar
-        un día inolvidable. ♡
+      <p id="schedule-status" class="schedule-status">
+        Nos hace mucha ilusión compartir este día con vosotros ♡
       </p>
+
+      <div class="schedule" id="horario">
+
+        <article class="schedule-item"
+          data-start="660"
+          data-end="720">
+
+          <span class="schedule-time">11:00</span>
+
+          <div class="schedule-content">
+            <h3>La ceremonia</h3>
+            <p>Comienza nuestra nueva aventura.</p>
+          </div>
+
+        </article>
+
+
+        <article class="schedule-item"
+          data-start="720"
+          data-end="840">
+
+          <span class="schedule-time">12:00</span>
+
+          <div class="schedule-content">
+            <h3>El cóctel</h3>
+            <p>Un momento para brindar y disfrutar.</p>
+          </div>
+
+        </article>
+
+
+        <article class="schedule-item"
+          data-start="840"
+          data-end="960">
+
+          <span class="schedule-time">14:00</span>
+
+          <div class="schedule-content">
+            <h3>La celebración</h3>
+            <p>Comida, risas y buenos recuerdos.</p>
+          </div>
+
+        </article>
+
+
+        <article class="schedule-item"
+          data-start="960"
+          data-end="1200">
+
+          <span class="schedule-time">16:00</span>
+
+          <div class="schedule-content">
+            <h3>¡Que siga la fiesta!</h3>
+            <p>Música, baile y mucha diversión.</p>
+          </div>
+
+        </article>
+
+      </div>
+
+      <p class="small-note">
+        Horario orientativo. Confirmaremos los horarios definitivos.
+      </p>
+
     </section>
 
-    <!-- REGALOS -->
+
+    <!-- =================================
+         TERCERA FOTOGRAFÍA
+         ANTES DE LOS REGALOS
+         ================================= -->
+
+    <section class="final-photo-section">
+
+      <p class="eyebrow">LO MEJOR ESTÁ POR VENIR</p>
+
+      <h2>Un recuerdo, mil emociones</h2>
+
+      <figure class="photo-frame final-photo">
+        <img
+          src="./images/boda-3.jpg"
+          alt="Ana y Joshue celebrando su amor"
+          class="wedding-photo"
+          loading="lazy"
+        >
+      </figure>
+
+      <p class="final-photo-text">
+        Gracias por acompañarnos en esta nueva etapa.
+        ¡Tenemos muchas ganas de celebrarlo juntos!
+      </p>
+
+      <div class="heart">♡</div>
+
+    </section>
+
+
+    <!-- =================================
+         REGALOS Y BIZUM
+         ================================= -->
+
     <section class="gifts" id="regalo">
+
       <p class="eyebrow">UN DETALLE CON MUCHO AMOR</p>
-      <h2>Un regalo para nuestra nueva etapa ♡</h2>
+
+      <h2>Un regalo para nuestra nueva etapa</h2>
 
       <p class="gift-message">
         Vuestra presencia es nuestro mejor regalo.
         Si queréis ayudarnos a comenzar esta nueva etapa,
         podéis hacerlo de forma totalmente voluntaria.
-        Lo importante para nosotros es compartir este día con vosotros.
       </p>
 
+
       <!-- BIZUM -->
+
       <article class="gift-card">
-        <div class="gift-icon" aria-hidden="true">♡</div>
-        <h3>Un detalle por Bizum</h3>
+
+        <div class="gift-icon">♡</div>
+
+        <h3>Enviar un Bizum</h3>
 
         <p>
-          Si os apetece hacernos un regalo, podéis enviarnos
-          vuestra aportación a través de Bizum desde la
-          aplicación de vuestro banco.
+          Podéis enviarnos vuestra aportación mediante
+          Bizum utilizando nuestro número de teléfono.
         </p>
-
-        <p class="gift-note">Nuestro número asociado a Bizum es:</p>
-
-       
-<div class="payment-number">
-  <span class="phone-icon" aria-hidden="true">♡</span>
-
-  <p
-    class="gift-contact"
-    id="bizum-number"
-    data-number="+34672316459">
-    Emanuel Joshue Murillo Mero
-  </p>
-</div>
-
-<button
-  type="button"
-  class="gift-button"
-  id="copy-bizum">
-  Copiar número de Bizum
-</button>
-
-<p
-  class="copy-feedback"
-  id="bizum-feedback"
-  role="status"
-  aria-live="polite">
-</p>
-
 
         <p class="gift-note">
-          Después, abre la aplicación de tu banco, entra en Bizum
-          y sigue los pasos para enviar el dinero. Comprueba
-          el destinatario antes de confirmar.
+          Número asociado a Bizum:
         </p>
 
-        <a
-          class="text-link"
-          href="https://bizum.com/es/como-funciona/"
-          target="_blank"
-          rel="noopener noreferrer">
-          Más información sobre Bizum
-        </a>
+        <p
+          id="bizum-number"
+          class="gift-contact"
+          data-number=""
+        >
+          Próximamente
+        </p>
+
+        <button
+          type="button"
+          id="copy-bizum"
+          class="gift-button"
+          disabled
+        >
+          Copiar número de Bizum
+        </button>
+
+        <p
+          id="bizum-feedback"
+          class="feedback"
+          aria-live="polite"
+        ></p>
+
       </article>
 
+
       <!-- TRANSFERENCIA BANCARIA -->
+
       <article class="gift-card">
-        <div class="gift-icon" aria-hidden="true">♡</div>
+
+        <div class="gift-icon">♡</div>
+
         <h3>Transferencia bancaria</h3>
 
         <p>
-          Si lo preferís, también podéis hacernos una transferencia
-          bancaria. Os dejamos un espacio preparado para añadir
-          nuestros datos cuando los tengamos.
+          También podéis ayudarnos con una transferencia
+          bancaria. Cualquier aportación será bienvenida.
         </p>
 
-        <!--
-          Cuando tengas el IBAN:
-          1. Sustituye el valor vacío de data-iban.
-          2. Añade el nombre de los titulares en el párrafo indicado.
-          3. El botón de copiar se habilitará automáticamente.
-        -->
-
-        <p class="bank-value" id="bank-holder">
-  Ana Rodríguez y Joshue Murillo
-</p>
-
-<p class="gift-note">IBAN</p>
-<p
-  class="bank-value"
-  id="bank-iban"
-  data-iban="ES70 0182 2234 1902 0161 0014">
-  ES** **** **** **** **** ****
-</p>
-
-          <button
-            type="button"
-            class="gift-button"
-            id="copy-iban"
-            disabled>
-            Copiar IBAN
-          </button>
-
-          <p
-            class="copy-feedback"
-            id="iban-feedback"
-            role="status"
-            aria-live="polite">
-            Los datos bancarios estarán disponibles próximamente.
+        <div class="qr-pending">
+          <span>♡</span>
+          <p>
+            Nuestro código QR de transferencia estará disponible aquí.
           </p>
         </div>
 
         <p class="gift-note">
-          Antes de confirmar el pago, comprobad que el nombre
-          del beneficiario y el IBAN sean correctos.
-        </p>
-      </article>
-
-      <!-- QR OPCIONAL -->
-      <article class="gift-card">
-        <div class="gift-icon" aria-hidden="true">♡</div>
-        <h3>También por código QR</h3>
-
-        <p>
-          Más adelante podremos añadir aquí un código QR de pago,
-          si disponemos de uno compatible con el método elegido.
+          Si preferís realizar una transferencia,
+          podéis copiar nuestros datos bancarios.
         </p>
 
-        <div class="qr-pending">
-          <span aria-hidden="true">♡</span>
-          <p>El código QR estará disponible próximamente.</p>
-        </div>
+        <p
+          id="bank-iban"
+          class="bank-iban"
+          data-iban=""
+        >
+          Datos bancarios próximamente
+        </p>
+
+        <button
+          type="button"
+          id="copy-iban"
+          class="gift-button"
+          disabled
+        >
+          Copiar IBAN
+        </button>
+
+        <p
+          id="iban-feedback"
+          class="feedback"
+          aria-live="polite"
+        ></p>
+
       </article>
+
 
       <p class="gift-thanks">
         Gracias por formar parte de nuestra historia. ♡
       </p>
+
     </section>
 
   </main>
 
-  <!-- PIE DE PÁGINA -->
+
+  <!-- =================================
+       PIE DE PÁGINA
+       ================================= -->
+
   <footer>
-    <div class="footer-heart" aria-hidden="true">♡</div>
+
+    <div class="footer-heart">♡</div>
+
     <p>Con amor, Ana & Joshue</p>
+
     <small>10 de abril de 2027</small>
+
+    <a href="#inicio" class="back-to-top">
+      Volver al inicio ↑
+    </a>
+
   </footer>
 
 </body>
