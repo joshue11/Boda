@@ -1,12 +1,13 @@
-/* ========================================
-   BODA DE ANA Y JOSHUE
-   10 de abril de 2027, a las 17:00
-   Hora de Madrid
-   ======================================== */
 
-// ========================================
-// CUENTA ATRÁS
-// ========================================
+/* =========================================
+   ANA & JOSHUE
+   FUNCIONES DE LA WEB DE BODA
+   ========================================= */
+
+
+/* =========================================
+   1. CUENTA ATRÁS
+   ========================================= */
 
 const weddingDate = new Date(
   "2027-04-10T17:00:00+02:00"
@@ -36,7 +37,6 @@ function updateCountdown() {
       clearInterval(countdownInterval);
       countdownInterval = null;
     }
-
     return;
   }
 
@@ -85,32 +85,33 @@ if (Date.now() < weddingDate) {
   countdownInterval = setInterval(updateCountdown, 1000);
 }
 
-// ========================================
-// COPIAR TEXTO
-// ========================================
+
+/* =========================================
+   2. FUNCIÓN GENERAL PARA COPIAR TEXTO
+   ========================================= */
 
 async function copyText(text) {
-  // Método preferido: API del portapapeles.
-  // Normalmente requiere HTTPS o localhost.
+
   if (navigator.clipboard && window.isSecureContext) {
     try {
       await navigator.clipboard.writeText(text);
       return true;
     } catch (error) {
-      // Si falla, intentamos el método alternativo.
+      // Intentar método alternativo.
     }
   }
 
-  // Alternativa para navegadores compatibles.
   const temporaryInput = document.createElement("textarea");
 
   temporaryInput.value = text;
   temporaryInput.setAttribute("readonly", "");
+
   temporaryInput.style.position = "fixed";
   temporaryInput.style.left = "-9999px";
   temporaryInput.style.top = "0";
 
   document.body.appendChild(temporaryInput);
+
   temporaryInput.select();
   temporaryInput.setSelectionRange(0, text.length);
 
@@ -127,25 +128,47 @@ async function copyText(text) {
   return copied;
 }
 
-// ========================================
-// COPIAR NÚMERO DE BIZUM
-// ========================================
 
-const copyBizumButton = document.getElementById("copy-bizum");
-const bizumNumberElement = document.getElementById("bizum-number");
-const bizumFeedback = document.getElementById("bizum-feedback");
+/* =========================================
+   3. COPIAR NÚMERO DE BIZUM
+   ========================================= */
 
-if (copyBizumButton && bizumNumberElement && bizumFeedback) {
+const copyBizumButton =
+  document.getElementById("copy-bizum");
+
+const bizumNumberElement =
+  document.getElementById("bizum-number");
+
+const bizumFeedback =
+  document.getElementById("bizum-feedback");
+
+if (
+  copyBizumButton &&
+  bizumNumberElement &&
+  bizumFeedback
+) {
+
+  const rawNumber =
+    bizumNumberElement.getAttribute("data-number") || "";
+
+  const phoneNumber =
+    rawNumber.replace(/[^\d+]/g, "");
+
+  copyBizumButton.disabled = !phoneNumber;
+
+  if (phoneNumber) {
+    bizumNumberElement.textContent = rawNumber;
+  }
+
   copyBizumButton.addEventListener("click", async () => {
-    // Leer directamente el atributo data-number.
-    const rawNumber = bizumNumberElement.getAttribute("data-number");
-    const phoneNumber = (rawNumber || "").replace(/[^\d+]/g, "");
 
-    console.log("Número leído:", rawNumber);
+    const currentNumber =
+      (bizumNumberElement.getAttribute("data-number") || "")
+        .replace(/[^\d+]/g, "");
 
-    if (!phoneNumber) {
+    if (!currentNumber) {
       bizumFeedback.textContent =
-        "No se encuentra el número. Revisa el atributo data-number del HTML.";
+        "El número de Bizum estará disponible próximamente.";
       return;
     }
 
@@ -153,59 +176,78 @@ if (copyBizumButton && bizumNumberElement && bizumFeedback) {
     bizumFeedback.textContent = "Copiando número…";
 
     try {
-      const copied = await copyText(phoneNumber);
+      const copied = await copyText(currentNumber);
 
       if (copied) {
         bizumFeedback.textContent =
           "¡Número copiado correctamente! ♡";
 
-        copyBizumButton.textContent = "¡Número copiado! ♡";
+        copyBizumButton.textContent =
+          "¡Número copiado! ♡";
       } else {
         bizumFeedback.textContent =
-          "No se pudo copiar automáticamente. Número: " + phoneNumber;
+          "No se pudo copiar. Número: " + currentNumber;
       }
+
     } catch (error) {
+
       bizumFeedback.textContent =
-        "Error al copiar. Puedes copiar manualmente: " + phoneNumber;
+        "Error al copiar el número. Inténtalo manualmente.";
+
     } finally {
+
       copyBizumButton.disabled = false;
 
       window.setTimeout(() => {
-        copyBizumButton.textContent = "Copiar número de Bizum";
+        copyBizumButton.textContent =
+          "Copiar número de Bizum";
       }, 2500);
     }
   });
 }
-// ========================================
-// COPIAR IBAN
-// ========================================
 
-const copyIbanButton = document.getElementById("copy-iban");
-const ibanElement = document.getElementById("bank-iban");
-const ibanFeedback = document.getElementById("iban-feedback");
 
-if (copyIbanButton && ibanElement && ibanFeedback) {
-  // El botón solo se activa cuando se ha añadido un IBAN.
-  const iban = (ibanElement.dataset.iban || "")
-    .replace(/\s+/g, "")
-    .trim();
+/* =========================================
+   4. COPIAR IBAN
+   ========================================= */
 
-  copyIbanButton.disabled = !iban;
+const copyIbanButton =
+  document.getElementById("copy-iban");
 
-  if (iban) {
+const ibanElement =
+  document.getElementById("bank-iban");
+
+const ibanFeedback =
+  document.getElementById("iban-feedback");
+
+if (
+  copyIbanButton &&
+  ibanElement &&
+  ibanFeedback
+) {
+
+  const initialIban =
+    (ibanElement.dataset.iban || "")
+      .replace(/\s+/g, "")
+      .trim();
+
+  copyIbanButton.disabled = !initialIban;
+
+  if (initialIban) {
     copyIbanButton.textContent = "Copiar IBAN";
-    ibanFeedback.textContent = "";
+    ibanElement.textContent = initialIban;
   }
 
   copyIbanButton.addEventListener("click", async () => {
-    const currentIban = (ibanElement.dataset.iban || "")
-      .replace(/\s+/g, "")
-      .trim();
+
+    const currentIban =
+      (ibanElement.dataset.iban || "")
+        .replace(/\s+/g, "")
+        .trim();
 
     if (!currentIban) {
       ibanFeedback.textContent =
         "Los datos bancarios estarán disponibles próximamente.";
-
       return;
     }
 
@@ -219,16 +261,21 @@ if (copyIbanButton && ibanElement && ibanFeedback) {
         ibanFeedback.textContent =
           "¡IBAN copiado! ♡ Ya puedes pegarlo en tu banco.";
 
-        copyIbanButton.textContent = "¡IBAN copiado! ♡";
+        copyIbanButton.textContent =
+          "¡IBAN copiado! ♡";
       } else {
         ibanFeedback.textContent =
-          "No se ha podido copiar automáticamente. " +
-          "Puedes seleccionar el IBAN y copiarlo manualmente.";
+          "No se pudo copiar automáticamente. " +
+          "Puedes copiarlo manualmente: " + currentIban;
       }
+
     } catch (error) {
+
       ibanFeedback.textContent =
-        "No se ha podido copiar el IBAN. Inténtalo manualmente.";
+        "No se pudo copiar el IBAN. Inténtalo manualmente.";
+
     } finally {
+
       copyIbanButton.disabled = false;
 
       window.setTimeout(() => {
@@ -237,15 +284,20 @@ if (copyIbanButton && ibanElement && ibanFeedback) {
     }
   });
 }
-/* ========================================
-   HORARIO DE LA BODA
-   Fecha: 10 de abril de 2027
-   Zona horaria: Madrid
-   ======================================== */
+
+
+/* =========================================
+   5. HORARIO DE LA BODA
+   ZONA HORARIA: EUROPE/MADRID
+   ========================================= */
 
 (function initWeddingSchedule() {
-  const schedule = document.getElementById("horario");
-  const status = document.getElementById("schedule-status");
+
+  const schedule =
+    document.getElementById("horario");
+
+  const status =
+    document.getElementById("schedule-status");
 
   if (!schedule || !status) return;
 
@@ -253,21 +305,24 @@ if (copyIbanButton && ibanElement && ibanFeedback) {
     schedule.querySelectorAll(".schedule-item")
   );
 
-  const madridDateFormatter = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Madrid",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
-  });
+  const madridDateFormatter =
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Madrid",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    });
 
-  const madridTimeFormatter = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Madrid",
-    hour: "2-digit",
-    minute: "2-digit",
-    hourCycle: "h23"
-  });
+  const madridTimeFormatter =
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Madrid",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23"
+    });
 
   function updateSchedule() {
+
     const now = new Date();
 
     const dateParts = Object.fromEntries(
@@ -282,12 +337,15 @@ if (copyIbanButton && ibanElement && ibanFeedback) {
       dateParts.month === "04" &&
       dateParts.day === "10";
 
-    // Fuera del día de la boda, no hay actividades en curso.
-    items.forEach(item => item.classList.remove("is-current"));
+    items.forEach(item => {
+      item.classList.remove("is-current");
+    });
 
     if (!isWeddingDay) {
+
       status.textContent =
         "Nos hace mucha ilusión compartir este día con vosotros ♡";
+
       return;
     }
 
@@ -303,26 +361,37 @@ if (copyIbanButton && ibanElement && ibanFeedback) {
       Number(timeParts.minute);
 
     const currentItem = items.find(item => {
+
       const start = Number(item.dataset.start);
       const end = Number(item.dataset.end);
 
-      return currentMinutes >= start && currentMinutes < end;
+      return (
+        currentMinutes >= start &&
+        currentMinutes < end
+      );
     });
 
     if (currentItem) {
+
       currentItem.classList.add("is-current");
 
       const title = currentItem.querySelector("h3");
 
       status.textContent =
         "♡ En este momento: " + title.textContent;
+
     } else if (currentMinutes < 660) {
+
       status.textContent =
         "¡Hoy es el gran día! Nos vemos muy pronto ♡";
+
     } else if (currentMinutes >= 1200) {
+
       status.textContent =
         "¡Gracias por compartir este día con nosotros! ♡";
+
     } else {
+
       status.textContent =
         "Estamos entre actividades. ¡Seguimos disfrutando juntos! ♡";
     }
@@ -330,6 +399,6 @@ if (copyIbanButton && ibanElement && ibanFeedback) {
 
   updateSchedule();
 
-  // Actualiza el estado cada minuto.
   window.setInterval(updateSchedule, 60 * 1000);
+
 })();
