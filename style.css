@@ -633,21 +633,6 @@ section {
   font-size: 0.88rem;
 }
 
-.qr-pending {
-  margin-top: 20px;
-  padding: 25px;
-  border: 1px dashed var(--olive);
-  background: rgba(255, 255, 255, 0.45);
-}
-
-.qr-pending span {
-  color: var(--olive);
-  font-size: 2rem;
-}
-
-.qr-pending p {
-  margin: 8px 0 0;
-}
 
 .gift-thanks {
   margin-top: 35px;
