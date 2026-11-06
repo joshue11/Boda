@@ -849,14 +849,16 @@ footer small {
     object-fit: cover;
   }
 }
-/* PORTADA: FOTO DE EXTREMO A EXTREMO */
+
+/* PORTADA: FOTO COMPLETA DE EXTREMO A EXTREMO */
 
 .hero-photo {
+  display: block;
   width: 100vw !important;
   max-width: none !important;
-  height: 65vh;
-  min-height: 400px;
-  max-height: 750px;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
 
   margin: 20px 0 35px !important;
   margin-left: calc(50% - 50vw) !important;
@@ -865,27 +867,20 @@ footer small {
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  overflow: hidden;
+  overflow: visible !important;
 }
 
 .hero-photo .wedding-photo {
   display: block;
   width: 100% !important;
-  height: 100% !important;
+  height: auto !important;
   max-height: none !important;
+  aspect-ratio: auto !important;
 
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain !important;
+  object-position: center !important;
 
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-}
-
-@media (max-width: 760px) {
-  .hero-photo {
-    height: 55vh;
-    min-height: 300px;
-    max-height: 500px;
-  }
 }
