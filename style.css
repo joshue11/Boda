@@ -30,7 +30,7 @@ body {
   margin: 0;
   width: 100%;
   max-width: 100%;
-  overflow-x: clip;
+  overflow-x: hidden;
   background: var(--cream-light);
   color: var(--text);
   font-family: "DM Sans", sans-serif;
@@ -127,7 +127,7 @@ section {
   justify-content: center;
   text-align: center;
   background: var(--cream);
-  overflow-x: clip;
+  overflow: visible;
 }
 
 .hero h1 {
@@ -157,10 +157,8 @@ section {
 }
 
 /* =========================================
-   FOTO PRINCIPAL DE PORTADA
+   FOTO PRINCIPAL — ANCHO COMPLETO
    ========================================= */
-
-/* La foto sale del contenedor y ocupa todo el ancho de pantalla */
 
 .hero-photo {
   position: relative;
@@ -169,40 +167,45 @@ section {
 
   display: block;
   flex: 0 0 auto;
-  align-self: auto;
+  align-self: center;
 
-  width: 100vw;
-  max-width: none;
+  width: 100vw !important;
+  max-width: none !important;
 
-  height: auto;
-  min-height: 0;
-  max-height: none;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
 
-  margin: 20px 0 30px;
-  padding: 0;
+  margin: 20px 0 30px !important;
+  padding: 0 !important;
 
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .hero-photo .wedding-photo {
   display: block;
-  width: 100%;
-  height: auto;
 
-  max-height: none;
-  aspect-ratio: auto;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
 
-  object-fit: contain;
-  object-position: center;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
 
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  object-fit: contain !important;
+  object-position: center center !important;
+
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
+
+/* CUENTA ATRÁS */
 
 .countdown-heading {
   margin: 25px 0 12px;
@@ -694,8 +697,18 @@ footer small {
   }
 
   .hero-photo {
-    margin-top: 15px;
-    margin-bottom: 25px;
+    width: 100vw !important;
+    max-width: none !important;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 15px 0 25px !important;
+  }
+
+  .hero-photo .wedding-photo {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    object-fit: contain !important;
   }
 
   .countdown {
@@ -774,6 +787,7 @@ footer small {
 }
 
 @media (max-width: 390px) {
+
   .time-box {
     min-width: 61px;
   }
@@ -782,6 +796,12 @@ footer small {
     grid-template-columns: 65px 22px minmax(0, 1fr);
     gap: 6px;
   }
+
+  .schedule-time {
+    font-size: 0.66rem;
+  }
+}
+
 
   .schedule-time {
     font-size: 0.66rem;
