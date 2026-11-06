@@ -139,6 +139,12 @@ body {
   overflow-x: clip;
 }
 
+
+/* FOTO DE PORTADA: ANCHO COMPLETO Y MENOS ALTURA */
+
+
+/* FOTO DE PORTADA: ANCHO COMPLETO Y MENOS ALTURA */
+
 .hero-photo {
   display: block;
   position: relative;
@@ -150,10 +156,10 @@ body {
   min-height: 0 !important;
   max-height: none !important;
 
-  margin: 20px -20px 35px !important;
+  margin: 15px -20px 30px !important;
 
   padding: 0 !important;
-  border: 0 !important;
+  border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   overflow: hidden !important;
@@ -161,15 +167,17 @@ body {
 
 .hero-photo .wedding-photo {
   display: block;
+
   width: 100% !important;
   height: auto !important;
-  max-height: none !important;
-  aspect-ratio: auto !important;
+
+  max-height: 480px !important;
+  aspect-ratio: 16 / 9 !important;
 
   object-fit: contain !important;
-  object-position: center !important;
+  object-position: center center !important;
 
-  border: 0 !important;
+  border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
@@ -177,9 +185,22 @@ body {
 @media (max-width: 760px) {
   .hero-photo {
     width: calc(100% + 32px) !important;
-    margin: 20px -16px 35px !important;
+    margin: 15px -16px 25px !important;
+  }
+
+  .hero-photo .wedding-photo {
+    max-height: 350px !important;
+    aspect-ratio: auto !important;
   }
 }
+
+
+  .hero-photo .wedding-photo {
+    max-height: 350px !important;
+    aspect-ratio: auto !important;
+  }
+}
+
 
 .hero h1 {
   margin: 12px 0;
