@@ -156,54 +156,96 @@ section {
   letter-spacing: 0.3em;
 }
 
-/* =========================================
-   FOTO PRINCIPAL — ANCHO COMPLETO
-   ========================================= */
+
+/* =====================================
+   FOTO PRINCIPAL: ANCHO COMPLETO
+   SIN BORDES NI MARCOS
+===================================== */
+
+.hero {
+  overflow: visible;
+  padding-left: 0;
+  padding-right: 0;
+}
 
 .hero-photo {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 
-  display: block;
-  flex: 0 0 auto;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
+
+  margin: 25px 0;
+  padding: 0;
+
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+
+  overflow: hidden;
   align-self: center;
-
-  width: 100vw !important;
-  max-width: none !important;
-
-  height: auto !important;
-  min-height: 0 !important;
-  max-height: none !important;
-
-  margin: 20px 0 30px !important;
-  padding: 0 !important;
-
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-
-  overflow: hidden !important;
+  box-sizing: border-box;
+  line-height: 0;
 }
 
 .hero-photo .wedding-photo {
   display: block;
 
-  width: 100% !important;
-  max-width: none !important;
-  height: auto !important;
+  width: 100%;
+  max-width: none;
+  height: auto;
 
-  min-height: 0 !important;
-  max-height: none !important;
-  aspect-ratio: auto !important;
+  margin: 0;
+  padding: 0;
 
-  object-fit: contain !important;
-  object-position: center center !important;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+  object-fit: contain;
+  object-position: center;
 }
+
+/* MÓVILES */
+@media (max-width: 768px) {
+
+  .hero {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .hero-photo {
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .hero-photo .wedding-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    object-fit: contain;
+  }
+}
+
 
 /* CUENTA ATRÁS */
 
