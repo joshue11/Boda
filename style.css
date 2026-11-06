@@ -849,3 +849,43 @@ footer small {
     object-fit: cover;
   }
 }
+/* PORTADA: FOTO DE EXTREMO A EXTREMO */
+
+.hero-photo {
+  width: 100vw !important;
+  max-width: none !important;
+  height: 65vh;
+  min-height: 400px;
+  max-height: 750px;
+
+  margin: 20px 0 35px !important;
+  margin-left: calc(50% - 50vw) !important;
+
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+.hero-photo .wedding-photo {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+
+  object-fit: cover;
+  object-position: center;
+
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 760px) {
+  .hero-photo {
+    height: 55vh;
+    min-height: 300px;
+    max-height: 500px;
+  }
+}
