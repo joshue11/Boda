@@ -132,7 +132,7 @@ section {
 
 .hero h1 {
   margin: 12px 0;
-  font-size: clamp(3rem, 9vw, 5.8rem);
+  font-size: clamp(3.8rem, 11vw, 7rem);
   letter-spacing: -0.04em;
 }
 
