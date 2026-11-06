@@ -849,3 +849,99 @@ footer small {
     font-size: 0.66rem;
   }
 }
+
+/* =====================================
+   FOTO PRINCIPAL A PANTALLA COMPLETA
+   SIN BORDES NI ESPACIOS LATERALES
+===================================== */
+
+/* Evitar márgenes y desbordamientos de página */
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+}
+
+/* La portada conserva su diseño */
+.hero {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* La imagen sale de los márgenes de la portada */
+.hero-photo {
+  position: relative;
+
+  left: 50%;
+  margin-left: -50vw;
+
+  width: 100vw;
+  max-width: 100vw;
+
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+
+  display: block;
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+/* La fotografía ocupa todo el ancho */
+.hero-photo .wedding-photo {
+  display: block;
+
+  width: 100%;
+  max-width: none;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+
+  .hero-photo {
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+
+    width: 100vw;
+    max-width: 100vw;
+
+    padding: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+  .hero-photo .wedding-photo {
+    width: 100%;
+    max-width: none;
+    height: auto;
+
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+}
